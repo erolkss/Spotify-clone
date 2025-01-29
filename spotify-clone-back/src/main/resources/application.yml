@@ -1,0 +1,41 @@
+logging:
+  level:
+    ROOT: info
+    org.hibernate.SQL: DEBUG
+    fr.codecake.spotifyclone: DEBUG
+
+spring:
+  application:
+    name: spotify-clone-back
+  datasource:
+    url: ${MY_SQL_URL}
+    username: ${MY_SQL_USERNAME}
+    password: ${MY_SQL_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  liquibase:
+    change-log: classpath:db/changelog/master.xml
+    default-schema: ${MY_SQL_DB}
+#    context: dev
+#    enable: true
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: deferred
+    default-schema: spotify_clone
+    enabled: true
+#      drop-first: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+server:
+  port: 8080
+
