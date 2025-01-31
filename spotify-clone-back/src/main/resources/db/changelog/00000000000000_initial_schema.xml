@@ -34,7 +34,7 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="public_id" type="${uuidType}">
+            <column name="public_id" type="${fkTypeFavoriteSong}">
                 <constraints  nullable="false" unique="true" />
             </column>
             <column name="title" type="varchar(256)">
@@ -71,7 +71,7 @@
             <column name="user_email" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="song_public_id" type="${uuidType}">
+            <column name="song_public_id" type="${fkTypeFavoriteSong}">
                 <constraints nullable="false"/>
             </column>
         </createTable>

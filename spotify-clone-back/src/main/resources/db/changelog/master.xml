@@ -9,6 +9,7 @@
     <property name="blobType" value="blob" dbms="mysql"/>
     <property name="uuidType" value="uuid" dbms="mysql"/>
     <property name="datetimeType" value="datetime" dbms="mysql"/>
+    <property name="fkTypeFavoriteSong" value="BINARY(16)" dbms="mysql"/>
 
     <include file="db/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
 
