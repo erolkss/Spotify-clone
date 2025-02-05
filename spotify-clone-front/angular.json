@@ -67,6 +67,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "buildTarget": "spotify-clone:build",
+            "proxyConfig": "proxy.conf.mjs"
+          },
           "configurations": {
             "production": {
               "buildTarget": "spotify-clone-front:build:production"
