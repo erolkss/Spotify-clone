@@ -1,4 +1,4 @@
-import {faHeart as faHeartRegular, IconDefinition} from "@fortawesome/free-solid-svg-icons";
+import {faHeart as faHeartRegular, IconDefinition} from "@fortawesome/free-regular-svg-icons";
 import {
   faBackwardStep,
   faBook,
