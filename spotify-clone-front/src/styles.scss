@@ -1,5 +1,29 @@
+@import 'assets/scss/_bootstrap-variables';
+@import 'bootstrap/scss/bootstrap';
+
 body {
-    background-color: #000 !important; /* Preto absoluto */
-    color: #fff; /* Garante que o texto fique visível */
-  }
-  
+  background-color: #000 !important;
+  /* Preto absoluto */
+  color: #fff;
+  /* Garante que o texto fique visível */
+}
+
+.nav-icon {
+  font-size: 20px;
+}
+
+
+.song-card-background {
+  cursor: pointer;
+  background-color: $card-inactive-background;
+}
+
+.song-card-background:hover {
+  background-color: $card-hover-background;
+  border-radius: $card-border-radius;
+}
+
+.author {
+  color: $secondary;
+  font-size: $font-size-small;
+}

@@ -1,25 +1,33 @@
 @import "../../../assets/scss/bootstrap-variables";
 
 .router-icon {
-    font-size: 10px;
-    width: 30px;
-    height: 30px;
-    padding-top: 2px;
-    cursor: pointer;
+  font-size: 10px;
+  width: 30px;
+  height: 30px;
+  padding-top: 2px;
+  cursor: pointer;
 }
 
 .avatar {
-    border-radius: 40px;
+  border-radius: 40px;
 }
 
 .avatar-unknown {
-    border-radius: 40px;
-    font-size: 22px;
-    width: 45px;
-    height: 45px;
-    padding-top: 4px;
-    text-align: center;
-    vertical-align: center;
-    background-color: $white;
-    color: $dark;
+  border-radius: 40px;
+  font-size: 22px;
+  width: 45px;
+  height: 45px;
+  padding-top: 4px;
+  text-align: center;
+  vertical-align: center;
+  background-color: $white;
+  color: $dark;
+}
+.hover-animation a {
+  color: $white;
+  text-decoration: none;
+}
+.hover-animation:hover {
+  transform: scale(1.09);
+  cursor: pointer;
 }
