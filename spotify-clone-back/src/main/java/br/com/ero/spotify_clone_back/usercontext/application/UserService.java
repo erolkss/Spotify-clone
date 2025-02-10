@@ -91,7 +91,7 @@ public class UserService {
         }
 
         if (attributes.get("picture") != null) {
-            user.setLastName((String) attributes.get("picture"));
+            user.setImageUrl((String) attributes.get("picture"));
         }
 
         return user;
