@@ -8,6 +8,10 @@
   height: $main-content-height;
 }
 
+.full-height-main-content::-webkit-scrollbar {
+  display: none;
+}
+
 .toast-container {
   bottom: 13%;
   right: 35%;
