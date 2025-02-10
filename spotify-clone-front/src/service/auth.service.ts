@@ -5,6 +5,8 @@ import { User } from './model/user.model';
 import { environment } from '../environments/environment.development';
 import { Location } from '@angular/common';
 
+export type AuthPopupState = "OPEN" | "CLOSE";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +15,9 @@ export class AuthService {
   http: HttpClient = inject(HttpClient);
   location: Location = inject(Location);
   notConnected: string = 'NOT_CONNECTED';
+
+  private triggerAuthPopup$: WritableSignal<AuthPopupState> = signal("CLOSE");
+  authPopupStateChange = computed(() => this.triggerAuthPopup$());
 
 
   private fetchUser$: WritableSignal<State<User, HttpErrorResponse>> =
@@ -53,6 +58,10 @@ export class AuthService {
           location.href = response.logoutUrl
         }
       })
+  }
+
+  openOrCloseAuthPopup(state: AuthPopupState) {
+    this.triggerAuthPopup$.set(state);
   }
 
   constructor() { }
