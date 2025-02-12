@@ -5,6 +5,7 @@ import { NavigationComponent } from "./layout/navigation/navigation.component";
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fontAwesomeIcons } from './shared/font-awesome-icons';
 import { LibraryComponent } from "./layout/library/library.component";
+import { ToastService } from '../service/toast.service';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,8 @@ export class AppComponent {
   title = 'spotify-clone-front';
 
   private faIconLibrary = inject(FaIconLibrary);
+
+  toastService = inject(ToastService);
 
   ngOnInit(): void {
     this.initFontAwesome();
