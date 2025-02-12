@@ -1,28 +1,31 @@
-import { HttpClient, HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 import { computed, inject, Injectable, signal, WritableSignal } from '@angular/core';
-import { State } from './model/state.model';
-import { User } from './model/user.model';
-import { environment } from '../environments/environment.development';
-import { Location } from '@angular/common';
+import { HttpClient, HttpErrorResponse, HttpStatusCode } from "@angular/common/http";
+import { Location } from "@angular/common";
+import { State } from "./model/state.model";
+import { User } from "./model/user.model";
+import { environment } from '../environments/environment';
 
-export type AuthPopupState = "OPEN" | "CLOSE";
+
+export type AuthPopupState = "OPEN" | "CLOSE"
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  http: HttpClient = inject(HttpClient);
-  location: Location = inject(Location);
-  notConnected: string = 'NOT_CONNECTED';
+  http = inject(HttpClient);
 
-  private triggerAuthPopup$: WritableSignal<AuthPopupState> = signal("CLOSE");
-  authPopupStateChange = computed(() => this.triggerAuthPopup$());
+  location = inject(Location);
 
+  notConnected = 'NOT_CONNECTED';
 
   private fetchUser$: WritableSignal<State<User, HttpErrorResponse>> =
     signal(State.Builder<User, HttpErrorResponse>().forSuccess({ email: this.notConnected }).build());
   fetchUser = computed(() => this.fetchUser$());
+
+
+  private triggerAuthPopup$: WritableSignal<AuthPopupState> = signal("CLOSE");
+  authPopupStateChange = computed(() => this.triggerAuthPopup$());
 
   fetch(): void {
     this.http.get<User>(`${environment.API_URL}/api/get-authenticated-user`)
@@ -30,7 +33,7 @@ export class AuthService {
         next: user => this.fetchUser$.set(State.Builder<User, HttpErrorResponse>().forSuccess(user).build()),
         error: (err: HttpErrorResponse) => {
           if (err.status === HttpStatusCode.Unauthorized && this.isAuthenticated()) {
-            this.fetchUser$.set(State.Builder<User, HttpErrorResponse>().forSuccess({email: this.notConnected}).build());
+            this.fetchUser$.set(State.Builder<User, HttpErrorResponse>().forSuccess({ email: this.notConnected }).build());
           } else {
             this.fetchUser$.set(State.Builder<User, HttpErrorResponse>().forError(err).build());
           }
@@ -51,10 +54,10 @@ export class AuthService {
   }
 
   logout(): void {
-    this.http.post(`${environment.API_URL}/api/logout`, {}, {withCredentials: true})
+    this.http.post(`${environment.API_URL}/api/logout`, {}, { withCredentials: true })
       .subscribe({
         next: (response: any) => {
-          this.fetchUser$.set(State.Builder<User, HttpErrorResponse>().forSuccess({email: this.notConnected}).build());
+          this.fetchUser$.set(State.Builder<User, HttpErrorResponse>().forSuccess({ email: this.notConnected }).build());
           location.href = response.logoutUrl
         }
       })
@@ -64,5 +67,6 @@ export class AuthService {
     this.triggerAuthPopup$.set(state);
   }
 
-  constructor() { }
+  constructor() {
+  }
 }
