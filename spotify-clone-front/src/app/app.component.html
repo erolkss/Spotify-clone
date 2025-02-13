@@ -1,5 +1,5 @@
-<!-- <div class="position-absolute z-2 mt-3 toast-container">
-  @for (toast of toastService.toasts; track toast) {
+<div class="position-absolute z-2 mt-3 toast-container">
+  @for (toast of toastService.toasts; track toast.body) {
     <ngb-toast
       [class]="toast.className"
       [autohide]="true"
@@ -8,7 +8,7 @@
       {{ toast.body }}
     </ngb-toast>
   }
-</div> -->
+</div>
 <div class="container-fluid pt-3 vh-100">
   <div class="row height-main-row">
     <div class="d-none d-sm-none d-md-block col-md-3 col-xl-2 navigation pe-2 h-100">
@@ -17,7 +17,7 @@
     </div>
     <div class="col-12 col-sm-12 col-md-9 col-xl-10 ps-0 h-100">
       <app-header></app-header>
-      <div class="rounded-bottom-2 p-3 bg-dark overflow-scroll full-height-main-content">
+      <div class="rounded-bottom-2 p-3 bg-dark overflow-hidden full-height-main-content">
         <router-outlet></router-outlet>
       </div>
     </div>

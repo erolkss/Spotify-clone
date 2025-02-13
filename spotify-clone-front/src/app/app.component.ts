@@ -20,7 +20,7 @@ export class AppComponent {
 
   private faIconLibrary = inject(FaIconLibrary);
 
-  toastService = inject(ToastService);
+  toastService: ToastService = inject(ToastService);
 
   constructor() {
   }
